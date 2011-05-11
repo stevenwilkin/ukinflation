@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from google.appengine.api import memcache
 import urllib2
 import re
 from BeautifulSoup import BeautifulSoup
@@ -21,6 +22,9 @@ def main():
 	rpi = models.Rpi(key_name = '1')
 	rpi.value = match.group(1)
 	rpi.put()
+
+	# flush cached version
+	memcache.delete('rpi')
 
 if __name__ == '__main__':
     main()
