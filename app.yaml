@@ -7,5 +7,9 @@ handlers:
 - url: /css
   static_dir: public/css
 
+- url: /tasks/scrape-rpi
+  script: scrape-rpi.py
+  login: admin
+
 - url: .*
   script: main.py
