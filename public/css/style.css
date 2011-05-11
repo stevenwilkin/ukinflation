@@ -1,5 +1,17 @@
-h1 {
+body {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1 {
 	font-size: 60px;
 	font-weight: bold;
 	width: 180px;
@@ -10,4 +22,12 @@ h1 {
 	margin-left: -90px;
 	margin-top: -30px;
 	text-align: center;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	margin: 0 0 10px 0;
 }
