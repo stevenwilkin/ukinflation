@@ -7,7 +7,7 @@ import os
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
-         path = os.path.join(os.path.dirname(__file__), 'views/index.html')
+         path = os.path.join(os.path.dirname(__file__), 'views', 'index.html')
          self.response.out.write(template.render(path, {'rpi': '5%'}))
 
 
