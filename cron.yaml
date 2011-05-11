@@ -1,0 +1,4 @@
+cron:
+- description: daily scrape of .gov.uk site
+  url: /tasks/scrape-rpi
+  schedule: every day 00:00
