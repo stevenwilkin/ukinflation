@@ -1,0 +1,11 @@
+application: ukinflation
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /css
+  static_dir: public/css
+
+- url: .*
+  script: main.py
