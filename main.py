@@ -29,8 +29,17 @@ class MainHandler(webapp.RequestHandler):
 		self.response.out.write(template.render(path, {'rpi': rpi}))
 
 
+class ApiHandler(webapp.RequestHandler):
+	def get(self):
+		path = os.path.join(os.path.dirname(__file__), 'views', 'rpi.json')
+		self.response.headers['Content-Type'] = 'application/json'
+		self.response.out.write(template.render(path, {'rpi': get_rpi()}))
+
+
 def main():
-	application = webapp.WSGIApplication([('/', MainHandler)],
+	application = webapp.WSGIApplication(
+										[('/', MainHandler),
+										('/rpi.json', ApiHandler)],
 										debug=True)
 	util.run_wsgi_app(application)
 
