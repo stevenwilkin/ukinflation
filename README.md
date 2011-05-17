@@ -17,4 +17,9 @@ value, caching it via Memcache to reduce page load time
 Simple
 
 
+## API
+
+A basic JSON API is exposed at `/rpi.json`
+
+
 2011 [Steven Wilkin](http://stevenwilkin.com)
