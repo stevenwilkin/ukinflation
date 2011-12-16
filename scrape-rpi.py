@@ -10,13 +10,14 @@ import models
 
 def main():
 	# scrape the .gov.uk site
-	response = urllib2.urlopen('http://www.statistics.gov.uk/cci/nugget.asp?id=19')
+	response = urllib2.urlopen('http://www.ons.gov.uk/ons/index.html')
 	soup = BeautifulSoup(response.read())
 
-	paragraph = soup.find('p', 'cn_story_subtitle')
+	label = soup.find(title="Retail Prices Index").findParent('span')
+	value = label.findNextSibling('span').string    # has space at end
 
-	regex = re.compile('RPI (.+%)')
-	match = regex.search(str(paragraph))
+	regex = re.compile('(.+%)')
+	match = regex.search(str(value))
 
 	# store the RPI value in the datastore
 	rpi = models.Rpi(key_name = '1')
