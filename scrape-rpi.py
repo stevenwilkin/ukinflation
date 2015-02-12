@@ -13,13 +13,13 @@ def main():
 	response = urllib2.urlopen('http://www.ons.gov.uk/ons/index.html')
 	soup = BeautifulSoup(response.read())
 
-	label = soup.find(title="Retail Prices Index").findParent('span')
-	value = label.findNextSibling('span').string    # has space at end
+	label = soup.find(title="Consumer Prices Index ").parent
+	value = label.findNextSibling('td').string    # has space at end
 
 	regex = re.compile('(.+%)')
 	match = regex.search(str(value))
 
-	# store the RPI value in the datastore
+	# store the CPI value in the datastore
 	rpi = models.Rpi(key_name = '1')
 	rpi.value = match.group(1)
 	rpi.put()
